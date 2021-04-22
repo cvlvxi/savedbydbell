@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 20e1ea1c1ca643ab24281c4e4de4ad2ab721d49d098b0cf9372662a4a9c04c56
+-- hash: ee7370a93d221bf75716e7bc4d8f7f527ded7b13937a0a155ed1f7343b865633
 
 name:           savedbydbell
 version:        0.1.0.0
@@ -52,6 +52,7 @@ test-suite savedbydbell-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      BellTests
       Paths_savedbydbell
   hs-source-dirs:
       test
