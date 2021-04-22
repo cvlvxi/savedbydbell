@@ -44,7 +44,17 @@ type MethodNotation = [BellOperation]
 parseLine :: String -> Maybe BellOperation
 parseLine s
     | s == "x" = Just SwitchPairs
-    | otherwise = let maybeNumbers = [ readMaybe number :: Maybe Int  | number <- words s ] in sequence maybeNumbers
+    | otherwise = 
+        let 
+            maybeNumbers = [ readMaybe number :: Maybe Int  | number <- words s ]
+            maybeList = sequence maybeNumbers
+                in 
+                    case maybeList of
+                        Just list -> Just $ Hold list
+                        Nothing -> Nothing
+            
+
+
 
 
 
