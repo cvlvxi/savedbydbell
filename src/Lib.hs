@@ -8,6 +8,8 @@ import Data.Char
 import Text.Read
 import Data.Maybe
 
+
+
 trim xs = dropSpaceTail "" $ dropWhile isSpace xs
 
 dropSpaceTail maybeStuff "" = ""
@@ -17,13 +19,12 @@ dropSpaceTail maybeStuff (x:xs)
         | otherwise       = reverse maybeStuff ++ x : dropSpaceTail "" xs
 
 
-
-
+-- Using readFile to ensure closing of file 
+-- https://stackoverflow.com/questions/296792/haskell-io-and-closing-files
 parseInput :: String -> IO (Maybe MethodNotation)
 parseInput fileName =  do
-    handle <- openFile fileName ReadMode
-    contents <- hGetContents handle
-    let list = [ trim  x | x <-lines contents ]
+    contents <- readFile fileName
+    let list = [ trim  x | x <- lines contents ]
     let operations = map parseLine list
     if all isJust operations
         then
